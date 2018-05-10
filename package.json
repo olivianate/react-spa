@@ -3,14 +3,31 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "antd": "^3.5.0",
+    "history": "^4.7.2",
+    "js-cookie": "^2.2.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
+    "react-redux": "^5.0.7",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.4"
   },
+  "pre-commit": [
+    "precommit-msg",
+    "lint"
+  ],
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test --env=jsdom",
+    "eject": "react-app-rewired eject",
+    "precommit-msg": "echo 'Pre-commit checks...' && exit 0",
+    "lint": "eslint --cache ./app"
+  },
+  "devDependencies": {
+    "babel-plugin-import": "^1.7.0",
+    "react-app-rewire-less": "^2.1.1",
+    "react-app-rewired": "^1.5.2"
   }
 }
