@@ -26,5 +26,6 @@
     "gh-pages": "^1.1.0",
     "react-app-rewire-less": "^2.1.1",
     "react-app-rewired": "^1.5.2"
-  }
+  },
+  "homepage": "https://olivianate.github.io/react-spa"
 }
