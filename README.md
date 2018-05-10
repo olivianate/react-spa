@@ -11,6 +11,8 @@ yarn build || npm run build
 反编译
 yarn eject || npm run eject
 
+发布
+yarn deploy
 
 ```
 
