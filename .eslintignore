@@ -1,5 +1,2 @@
-src/dist/*
-src/main-build/*
 assets/*
-src/dll/*
 node_modules/*
