@@ -12,7 +12,7 @@ export const menus = [
   {
     name: "地图",
     url: "map",
-    icon: "map",
+    icon: "global",
     page: PageMapManage
   },
   {

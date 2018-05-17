@@ -9,19 +9,25 @@ import { toggleSide } from "./action";
 import { Icon } from "antd";
 
 class HeaderBar extends Component {
+  logout = () =>{
+    Cookies.remove('username', {path: '/'});
+    Cookies.remove('password', {path: '/'});
+    window.location.href = '/login';
+  }
   render() {
     const username = Cookies.get("username");
     const { collapsed, toggle } = this.props;
     return (
       <div className="header-box">
         <Icon
-          style={{ fontSize: 16, color: '#fff' }}
+          style={{ fontSize: 16, color: "#fff" }}
           type={collapsed ? "menu-unfold" : "menu-fold"}
           onClick={toggle}
         />
         <div className="header-author">
-          <Icon type="user" />
-          <span className="header-usename">{username}</span>
+            <Icon style={{ fontSize: 16, color: "#fff" }} type="user" />
+            <span className="header-usename">{username}</span>
+            <a href="javascript:void(0)" className="header-logout" onClick={this.logout}>退出</a>
         </div>
       </div>
     );

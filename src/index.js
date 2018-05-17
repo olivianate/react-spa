@@ -7,9 +7,13 @@ import Root from "./RouterMap";
 import thunk from 'redux-thunk'
 import { Provider } from "react-redux";
 import reducerStore from "./store";
+import config from './config';
 
 import registerServiceWorker from "./registerServiceWorker";
 
+if(config.isMock){
+  require('./utils/mock');
+}
 
 const enhancer = compose(applyMiddleware(thunk.withExtraArgument()));
 

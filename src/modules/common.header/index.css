@@ -5,3 +5,9 @@
     float: right;
     margin-right: 50px;
 }
+.header-usename{
+    color: #fff;
+}
+.header-logout{
+    margin-left: 10px;
+}

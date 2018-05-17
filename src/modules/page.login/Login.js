@@ -1,16 +1,18 @@
 import "./index.css";
 
 import React from "react";
-import { Form, Icon, Input, Button } from "antd";
+import { Form, Icon, Input, Button, Row, Col } from "antd";
+import HttpUtils from "../../utils/ajax";
 import Cookies from "js-cookie";
-
 const FormItem = Form.Item;
 
 class LoginPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      redirectToReferrer: false
+      redirectToReferrer: false,
+      seconds: 30,
+      isFetching: false
     };
   }
 
@@ -22,14 +24,53 @@ class LoginPage extends React.Component {
       if (err) {
         return;
       }
-      let { username } = values;
-      console.log(values);
+      let { username, password, identifycode } = values;
 
-      Cookies.set("username", username, { path: "/" });
-      this.setState({ redirectToReferrer: true });
+      const url = "/login";
+      HttpUtils(url, {
+        username: username,
+        password: password,
+        identifycode: identifycode
+      }).then(json => {
+        const data = json.data;
+        Cookies.set("username", data.username, { path: "/" });
+        this.setState({ redirectToReferrer: true });
+      });
+    });
+  };
+  fetchCaptcha = () => {
+    const url = "/loginIdentify";
+    const { form } = this.props;
+    const { username, password } = form.getFieldsValue();
+
+    HttpUtils(url, {
+      username: username,
+      password: password
+    }).then(json => {
+      this.setState({
+        isFetching: true
+      });
+      this.countdown(this.state.seconds);
     });
   };
 
+  countdown = seconds => {
+    this.timer = setTimeout(() => {
+      if (seconds > 1) {
+        this.setState({ seconds: --seconds });
+        this.countdown(this.state.seconds);
+      } else {
+        clearTimeout(this.timer);
+        this.resetCount();
+      }
+    }, 1000);
+  };
+  resetCount = () => {
+    this.setState({
+      seconds: 30,
+      isFetching: false
+    });
+  };
   render() {
     // const { history } = this.props;
 
@@ -38,9 +79,11 @@ class LoginPage extends React.Component {
       // history.push({
       //   pathname: "/"
       // });
-      window.location.href = '/';
+      window.location.href = "/";
     }
     const { getFieldDecorator } = this.props.form;
+    const { seconds, isFetching } = this.state;
+
     return (
       <div className="login-container">
         <div className="login-box">
@@ -53,7 +96,7 @@ class LoginPage extends React.Component {
                   prefix={
                     <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />
                   }
-                  placeholder="Username"
+                  placeholder="123"
                 />
               )}
             </FormItem>
@@ -66,9 +109,33 @@ class LoginPage extends React.Component {
                     <Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />
                   }
                   type="password"
-                  placeholder="Password"
+                  placeholder="123"
                 />
               )}
+            </FormItem>
+            <FormItem>
+              <Row gutter={10}>
+                <Col span={14}>
+                  {getFieldDecorator("identifycode", {
+                    rules: [{ required: true, message: "请输入验证码!" }]
+                  })(
+                    <Input
+                      prefix={
+                        <Icon
+                          type="safety"
+                          style={{ color: "rgba(0,0,0,.25)" }}
+                        />
+                      }
+                      placeholder="1234"
+                    />
+                  )}
+                </Col>
+                <Col span={10}>
+                  <Button onClick={this.fetchCaptcha}>
+                    {isFetching ? `${seconds}秒后重新获取` : "获取手机验证码"}
+                  </Button>
+                </Col>
+              </Row>
             </FormItem>
             <FormItem>
               <Button
@@ -76,7 +143,7 @@ class LoginPage extends React.Component {
                 htmlType="submit"
                 className="login-form-button"
               >
-                Log in
+                登录
               </Button>
             </FormItem>
           </Form>

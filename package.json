@@ -13,7 +13,8 @@
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.4",
-    "redux": "^4.0.0"
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.2.0"
   },
   "scripts": {
     "start": "react-app-rewired start",
@@ -24,9 +25,21 @@
   },
   "devDependencies": {
     "babel-plugin-import": "^1.7.0",
+    "fetch-mock": "^6.4.2",
     "gh-pages": "^1.1.0",
+    "mockjs": "^1.0.1-beta3",
     "react-app-rewire-less": "^2.1.1",
     "react-app-rewired": "^1.5.2"
+  },
+  "proxy": {
+    "/ehuodiBedrockApi": {
+      "target": "http://test.api.com",
+      "changeOrigin": true
+    },
+    "/projectManagementToolApi": {
+      "target": "http://test.api.com",
+      "changeOrigin": true
+    }
   },
   "homepage": "http://olivianate.github.io/react-spa"
 }
