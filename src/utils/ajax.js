@@ -8,7 +8,7 @@ const headers = {
 function hackMessage(msg) {
   if (msg) {
     if (msg == "authorityFailure" || msg == "没有登录！") {
-      window.location.href = "/login";
+      // window.location.href = "/login";
     } else if (msg === "Read timed out") {
     } else if (msg.indexOf("验证码") > -1) {
       const regExp = new RegExp(/[a-zA-Z:\(\)/-]/g);
