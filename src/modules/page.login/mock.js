@@ -1,4 +1,4 @@
-import Mock, {Random} from 'mockjs';
+import Mock from 'mockjs';
 import FetchMock from 'fetch-mock';
 
 FetchMock.mock('end:login', Mock.mock({
