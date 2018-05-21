@@ -1,6 +1,8 @@
 import PageHomeManage from "../modules/page.home.manage";
 import PageMapManage from "../modules/page.map.manage";
 import PageEchartsManage from "../modules/page.echarts.manage";
+import pageReqmanage from "../modules/page.req.manage";
+
 
 export const menus = [
   {
@@ -14,6 +16,12 @@ export const menus = [
     url: "map",
     icon: "global",
     page: PageMapManage
+  },
+  {
+    name: "列表管理",
+    url: "list",
+    icon: "bars",
+    page: pageReqmanage
   },
   {
     name: "Echarts",

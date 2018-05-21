@@ -79,7 +79,7 @@ class LoginPage extends React.Component {
       // history.push({
       //   pathname: "/"
       // });
-      window.location.href = "/";
+      window.location.href = "./";
     }
     const { getFieldDecorator } = this.props.form;
     const { seconds, isFetching } = this.state;

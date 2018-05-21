@@ -8,6 +8,8 @@ import { Layout } from "antd";
 import PageHomeManage from "../page.home.manage";
 import PageMapManage from "../page.map.manage";
 import PageEchartsManage from "../page.echarts.manage";
+import PageReqManage from "../page.req.manage";
+
 
 const { Content } = Layout;
 
@@ -28,6 +30,11 @@ class Contents extends Component {
         name: "地图",
         path: "/map",
         page: PageMapManage
+      },
+      {
+        name: "列表管理",
+        path: "/list",
+        page: PageReqManage
       },
       {
         name: "Echart",
