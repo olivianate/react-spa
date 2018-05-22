@@ -1,0 +1,14 @@
+.search-box{
+    margin-bottom: 20px;
+}
+.search-item{
+    display: inline-block;
+    margin: 0 5px;
+}
+.search-item label{
+    margin-right: 5px;
+}
+.search-item .item-input{
+    width: 130;
+    max-width: 130px;
+}

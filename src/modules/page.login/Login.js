@@ -27,11 +27,11 @@ class LoginPage extends React.Component {
       let { username, password, identifycode } = values;
 
       const url = "/login";
-      HttpUtils(url, {
+      HttpUtils({ url, data:{
         username: username,
         password: password,
         identifycode: identifycode
-      }).then(json => {
+      } }).then(json => {
         const data = json.data;
         Cookies.set("username", data.username, { path: "/" });
         this.setState({ redirectToReferrer: true });

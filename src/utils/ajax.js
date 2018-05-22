@@ -5,20 +5,6 @@ const headers = {
   "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
 };
 
-function hackMessage(msg) {
-  if (msg) {
-    if (msg === "authorityFailure" || msg === "没有登录！") {
-      // window.location.href = "/login";
-    } else if (msg === "Read timed out") {
-    } else if (msg.indexOf("验证码") > -1) {
-      const regExp = new RegExp(/[a-zA-Z:\(\)/-]/g);
-      message.error(msg.replace(regExp, ""));
-    } else {
-      message.error(msg);
-    }
-  }
-}
-
 const fetchInitOption = (obj = {}) => {
   if (obj instanceof FormData) return obj;
   return Object.keys(obj)
@@ -29,12 +15,14 @@ const fetchInitOption = (obj = {}) => {
 /**
  *
  * @param {string} url
- * @param {JSON} formdata
+ * @param {JSON} data
  * @returns {Promise}
  */
-export default function HttpUtils(url, formdata) {
+export default function HttpUtils(options) {
+  const { url, data } = options;
+
   return new Promise((resolve, reject) => {
-    const postdata = fetchInitOption(formdata);
+    const postdata = fetchInitOption(data);
 
     fetch(url, {
       method: "POST",
@@ -43,17 +31,16 @@ export default function HttpUtils(url, formdata) {
     })
       .then(res => {
         if (res.ok) {
-          return res.json();
+          return res.json();//JSON.parse(response.text());一个promise对象
         }
         // throw `${res.status}, ${res.statusText}`;
-        // console.log(res);
       })
       .then(json => {
         if (json && json.result === "success") {
           resolve(json);
         } else {
           reject(json);
-          hackMessage(json.msg);
+          message.error(json.msg);
         }
       })
       .catch(err => {

@@ -29,7 +29,8 @@
     "gh-pages": "^1.1.0",
     "mockjs": "^1.0.1-beta3",
     "react-app-rewire-less": "^2.1.1",
-    "react-app-rewired": "^1.5.2"
+    "react-app-rewired": "^1.5.2",
+    "redux-logger": "^3.0.6"
   },
   "proxy": {
     "/ehuodiBedrockApi": {

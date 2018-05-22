@@ -12,7 +12,7 @@ class HeaderBar extends Component {
   logout = () =>{
     Cookies.remove('username', {path: '/'});
     Cookies.remove('password', {path: '/'});
-    window.location.href = '/login';
+    window.location.href = './login';
   }
   render() {
     const username = Cookies.get("username");
@@ -27,7 +27,7 @@ class HeaderBar extends Component {
         <div className="header-author">
             <Icon style={{ fontSize: 16, color: "#fff" }} type="user" />
             <span className="header-usename">{username}</span>
-            <a href="javascript:void(0)" className="header-logout" onClick={this.logout}>退出</a>
+            <a className="header-logout" onClick={() =>this.logout()}>退出</a>
         </div>
       </div>
     );
