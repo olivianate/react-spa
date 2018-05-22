@@ -14,7 +14,7 @@ import registerServiceWorker from "./registerServiceWorker";
 if(config.isMock){
   require('./utils/mock');
 }
-
+window.BASE_URL = '/'
 const logger = createLogger();//日志中间件
 
 const enhancer = compose(applyMiddleware(thunk, logger));
