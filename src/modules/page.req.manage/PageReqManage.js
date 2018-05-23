@@ -28,22 +28,29 @@ class PageReqManage extends Component {
   componentDidMount() {
     this.onSearch();
   }
+
+  onFetch = () => {
+    this.setState({ currentPage: 1 }, this.onSearch);
+  };
+
   //表格分页切换
-  handleTableChange = (pagination, filters, sorter) => {
-    this.onSearch();
+  handleTableChange = page => {
+    const { current, pageSize } = page;
+    this.setState(
+      {
+        currentPage: current,
+        pageSize
+      },
+      this.onSearch
+    );
+  };
+  onChange = search => {
+    this.setState({ fields: search });
   };
   //搜索列表
-  onSearch = (fields, currentPage) => {
-    const values = this.state.fields;
-    fields = fields || values;
-
+  onSearch = () => {
     const { fetchData } = this.props;
-    const { pageSize } = this.state;
-    if (currentPage) {
-      this.setState({ currentPage })
-    }
-    currentPage = currentPage || this.state.currentPage
-
+    const { fields, pageSize, currentPage } = this.state;
 
     const skipCount = (currentPage - 1) * pageSize;
     fetchData({
@@ -63,7 +70,7 @@ class PageReqManage extends Component {
         this.setState({
           currentPage: 1
         });
-        this.onSearch();
+        this.onFetch();
       })
       .catch(error => {});
   };
@@ -85,6 +92,16 @@ class PageReqManage extends Component {
     }
   };
 
+  handleEditOk = () => {
+    const form = this.editForm;
+    this.handleCancel("edit");
+    form.validateFields((err, values) => {
+      if (!err) {
+        this.onFetch();
+        // console.log("valuse:", values);
+      }
+    });
+  };
   tabelColumns = deleteText => [
     {
       title: "Number",
@@ -107,9 +124,9 @@ class PageReqManage extends Component {
       key: "address"
     },
     {
-      title: "Time",
-      dataIndex: "time",
-      key: "time"
+      title: "CreateDate",
+      dataIndex: "createdate",
+      key: "createdate"
     },
     {
       title: "Action",
@@ -146,12 +163,16 @@ class PageReqManage extends Component {
     return (
       <div>
         <Spin spinning={isFetching}>
-          <SearchBar
-            onSubmit={this.onSearch}
-           />
+          <SearchBar onChange={this.onChange} onSubmit={this.onFetch} />
           <Table
             columns={this.tabelColumns(deleteText)}
-            dataSource={dataSource}
+            dataSource={
+              dataSource &&
+              dataSource.map((row, i) => ({
+                ...row,
+                key: i + 1
+              }))
+            }
             onChange={this.handleTableChange}
           />
           <DetailModal
@@ -161,8 +182,12 @@ class PageReqManage extends Component {
             item={item}
           />
           <EditModal
+            key={item.uuid}
+            ref={form => {
+              this.editForm = form;
+            }}
             visible={editModalVisible}
-            onOk={() => this.handleCancel("edit")}
+            onOk={this.handleEditOk}
             onCancel={() => this.handleCancel("edit")}
             item={item}
           />

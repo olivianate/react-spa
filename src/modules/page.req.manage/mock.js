@@ -8,12 +8,12 @@ FetchMock.mock('end:getdata', Mock.mock({
   "count": -1,
   "msg": "成功",
   "data|1-50": [{
-    'key|+1':1,
+    'uuid|+1':1,
     'number|+1':1,
     'name':'@string(10)',
     'age':'1111',
     'address':Random.region(),
-    'time':Random.date()
+    'createdate':Random.date()
   }]
 }));
 

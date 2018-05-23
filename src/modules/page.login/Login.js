@@ -82,6 +82,8 @@ class LoginPage extends React.Component {
       window.location.href = "./";
     }
     const { getFieldDecorator } = this.props.form;
+    console.log(this.props.form);
+
     const { seconds, isFetching } = this.state;
 
     return (
