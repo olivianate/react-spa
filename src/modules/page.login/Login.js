@@ -31,7 +31,7 @@ class LoginPage extends React.Component {
         username: username,
         password: password,
         identifycode: identifycode
-      } }).then(json => {
+      }}).then(json => {
         const data = json.data;
         Cookies.set("username", data.username, { path: "/" });
         this.setState({ redirectToReferrer: true });
@@ -43,9 +43,11 @@ class LoginPage extends React.Component {
     const { form } = this.props;
     const { username, password } = form.getFieldsValue();
 
-    HttpUtils(url, {
-      username: username,
-      password: password
+    HttpUtils({
+      url, data:{
+        username: username,
+        password: password
+      }
     }).then(json => {
       this.setState({
         isFetching: true
