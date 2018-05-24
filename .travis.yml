@@ -20,7 +20,7 @@ install:
 
 script:
   - npm run build
-  - npm run deploy
+  - yarn run deploy
 
 
 branches:
