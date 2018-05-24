@@ -18,9 +18,9 @@ cache:
 install: 
   - npm install
 
-# script:
-#   - npm run build
-#   - yarn run deploy
+script:
+  - npm run build
+  - npm run deploy
 
 
 branches:
