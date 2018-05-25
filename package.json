@@ -16,15 +16,24 @@
     "redux": "^4.0.0",
     "redux-thunk": "^2.2.0"
   },
+  "pre-commit": [
+    "precommit-msg",
+    "lint"
+  ],
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test --env=jsdom",
     "eject": "react-app-rewired eject",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "precommit-msg": "echo 'Pre-commit checks...' && exit 0",
+    "lint": "eslint --cache ./src",
+    "lint-fix": "eslint --cache ./src --fix"
   },
   "devDependencies": {
+    "babel-eslint": "^8.2.3",
     "babel-plugin-import": "^1.7.0",
+    "eslint": "^4.19.1",
     "fetch-mock": "^6.4.2",
     "gh-pages": "^1.1.0",
     "mockjs": "^1.0.1-beta3",
