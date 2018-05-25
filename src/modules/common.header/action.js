@@ -1,7 +1,7 @@
 export const TOGGLE_SIDE = 'TOGGLE_SIDE';
 
-export function toggleSide(){
+export function toggleSide() {
   return {
-    type:TOGGLE_SIDE,
-  }
+    type: TOGGLE_SIDE,
+  };
 }

@@ -75,19 +75,16 @@ class LoginPage extends React.Component {
     });
   };
   render() {
-    const homepath = config.host ? `/${config.host}/` : '/';
     // const { history } = this.props;
-
     const { redirectToReferrer } = this.state;
     if (redirectToReferrer) {
+      const homepath = config.host ? `/${config.host}/` : '/';
       // history.push({
       //   pathname: '/'
       // });
       window.location.href = homepath;
     }
     const { getFieldDecorator } = this.props.form;
-    console.log(this.props.form);
-
     const { seconds, isFetching } = this.state;
 
     return (
