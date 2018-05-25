@@ -8,16 +8,20 @@ const loginpath = config.host ? `/${config.host}/login` : '/login';
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
-    render={props =>
-      Cookies.get().username ? (
-        <Component {...props} />
-      ) : (
-        <Redirect
-          to={{
-            pathname: loginpath,
-          }}
-        />
-      )}
+    render={ props => {
+      return (
+        Cookies.get().username ? (
+          <Component {...props} />
+        ) : (
+          <Redirect
+            to={{
+              pathname: loginpath,
+            }}
+          />
+        )
+      ); 
+    }
+    }
   />
 );
 

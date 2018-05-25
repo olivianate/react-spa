@@ -9,7 +9,7 @@ import PageHomeManage from "../page.home.manage";
 import PageMapManage from "../page.map.manage";
 import PageEchartsManage from "../page.echarts.manage";
 import PageReqManage from "../page.req.manage";
-
+import config from '../../config'
 
 const { Content } = Layout;
 
@@ -18,27 +18,27 @@ class Contents extends Component {
     const routes = [
       {
         exact: true,
-        path: "/",
+        path: config.host ? `/${config.host}/` : "/",
         page: PageHomeManage
       },
       {
         name: "首页",
-        path: "/home",
+        path: config.host ? `/${config.host}/home` : "/home",
         page: PageHomeManage
       },
       {
         name: "地图",
-        path: "/map",
+        path: config.host ? `/${config.host}/map` : "/map",
         page: PageMapManage
       },
       {
         name: "列表管理",
-        path: "/list",
+        path: config.host ? `/${config.host}/list` : "/list",
         page: PageReqManage
       },
       {
         name: "Echart",
-        path: "/echarts",
+        path: config.host ? `/${config.host}/echarts` : "/echarts",
         page: PageEchartsManage
       }
     ];

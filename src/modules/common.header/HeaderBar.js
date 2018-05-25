@@ -28,7 +28,7 @@ class HeaderBar extends Component {
         <div className='header-author'>
           <Icon style={{ fontSize: 16, color: '#fff' }} type='user' />
           <span className='header-usename'>{username}</span>
-          <a className='header-logout' onClick={() => this.logout()}>退出</a>
+          <a className='header-logout' onClick={() =>this.logout()}>退出</a>
         </div>
       </div>
     );
