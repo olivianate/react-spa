@@ -1,33 +1,34 @@
-import "./index.css";
+import './index.css';
 
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
-import Cookies from "js-cookie";
-import { toggleSide } from "./action";
-
-import { Icon } from "antd";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import Cookies from 'js-cookie';
+import { toggleSide } from './action';
+import config from '../../config';
+import { Icon } from 'antd';
 
 class HeaderBar extends Component {
   logout = () =>{
-    Cookies.remove('username', {path: '/'});
-    Cookies.remove('password', {path: '/'});
-    window.location.href = './login';
+    const loginpath = config.host ? `/${config.host}/login` : '/login';
+    Cookies.remove('username', { path: '/' });
+    Cookies.remove('password', { path: '/' });
+    window.location.href = loginpath;
   }
   render() {
-    const username = Cookies.get("username");
+    const username = Cookies.get('username');
     const { collapsed, toggle } = this.props;
     return (
-      <div className="header-box">
+      <div className='header-box'>
         <Icon
-          style={{ fontSize: 16, color: "#fff" }}
-          type={collapsed ? "menu-unfold" : "menu-fold"}
+          style={{ fontSize: 16, color: '#fff' }}
+          type={collapsed ? 'menu-unfold' : 'menu-fold'}
           onClick={toggle}
         />
-        <div className="header-author">
-            <Icon style={{ fontSize: 16, color: "#fff" }} type="user" />
-            <span className="header-usename">{username}</span>
-            <a className="header-logout" onClick={() =>this.logout()}>退出</a>
+        <div className='header-author'>
+          <Icon style={{ fontSize: 16, color: '#fff' }} type='user' />
+          <span className='header-usename'>{username}</span>
+          <a className='header-logout' onClick={() => this.logout()}>退出</a>
         </div>
       </div>
     );

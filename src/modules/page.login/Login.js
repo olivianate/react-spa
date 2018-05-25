@@ -1,9 +1,10 @@
-import "./index.css";
+import './index.css';
 
-import React from "react";
-import { Form, Icon, Input, Button, Row, Col } from "antd";
-import HttpUtils from "../../utils/ajax";
-import Cookies from "js-cookie";
+import React from 'react';
+import { Form, Icon, Input, Button, Row, Col } from 'antd';
+import HttpUtils from '../../utils/ajax';
+import Cookies from 'js-cookie';
+import config from '../../config';
 const FormItem = Form.Item;
 
 class LoginPage extends React.Component {
@@ -26,20 +27,20 @@ class LoginPage extends React.Component {
       }
       let { username, password, identifycode } = values;
 
-      const url = "/login";
+      const url = '/login';
       HttpUtils({ url, data:{
         username: username,
         password: password,
         identifycode: identifycode
       }}).then(json => {
         const data = json.data;
-        Cookies.set("username", data.username, { path: "/" });
+        Cookies.set('username', data.username, { path: '/' });
         this.setState({ redirectToReferrer: true });
       });
     });
   };
   fetchCaptcha = () => {
-    const url = "/loginIdentify";
+    const url = '/loginIdentify';
     const { form } = this.props;
     const { username, password } = form.getFieldsValue();
 
@@ -74,14 +75,15 @@ class LoginPage extends React.Component {
     });
   };
   render() {
+    const homepath = config.host ? `/${config.host}/` : '/';
     // const { history } = this.props;
 
     const { redirectToReferrer } = this.state;
     if (redirectToReferrer) {
       // history.push({
-      //   pathname: "/"
+      //   pathname: '/'
       // });
-      window.location.href = "./";
+      window.location.href = homepath;
     }
     const { getFieldDecorator } = this.props.form;
     console.log(this.props.form);
@@ -89,63 +91,63 @@ class LoginPage extends React.Component {
     const { seconds, isFetching } = this.state;
 
     return (
-      <div className="login-container">
-        <div className="login-box">
-          <Form onSubmit={this.handleSubmit} className="login-form">
+      <div className='login-container'>
+        <div className='login-box'>
+          <Form onSubmit={this.handleSubmit} className='login-form'>
             <FormItem>
-              {getFieldDecorator("username", {
-                rules: [{ required: true, message: "请输入用户名!" }]
+              {getFieldDecorator('username', {
+                rules: [{ required: true, message: '请输入用户名!' }]
               })(
                 <Input
                   prefix={
-                    <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />
+                    <Icon type='user' style={{ color: 'rgba(0,0,0,.25)' }} />
                   }
-                  placeholder="123"
+                  placeholder='123'
                 />
               )}
             </FormItem>
             <FormItem>
-              {getFieldDecorator("password", {
-                rules: [{ required: true, message: "请输入密码!" }]
+              {getFieldDecorator('password', {
+                rules: [{ required: true, message: '请输入密码!' }]
               })(
                 <Input
                   prefix={
-                    <Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />
+                    <Icon type='lock' style={{ color: 'rgba(0,0,0,.25)' }} />
                   }
-                  type="password"
-                  placeholder="123"
+                  type='password'
+                  placeholder='123'
                 />
               )}
             </FormItem>
             <FormItem>
               <Row gutter={10}>
                 <Col span={14}>
-                  {getFieldDecorator("identifycode", {
-                    rules: [{ required: true, message: "请输入验证码!" }]
+                  {getFieldDecorator('identifycode', {
+                    rules: [{ required: true, message: '请输入验证码!' }]
                   })(
                     <Input
                       prefix={
                         <Icon
-                          type="safety"
-                          style={{ color: "rgba(0,0,0,.25)" }}
+                          type='safety'
+                          style={{ color: 'rgba(0,0,0,.25)' }}
                         />
                       }
-                      placeholder="1234"
+                      placeholder='1234'
                     />
                   )}
                 </Col>
                 <Col span={10}>
                   <Button onClick={this.fetchCaptcha}>
-                    {isFetching ? `${seconds}秒后重新获取` : "获取手机验证码"}
+                    {isFetching ? `${seconds}秒后重新获取` : '获取手机验证码'}
                   </Button>
                 </Col>
               </Row>
             </FormItem>
             <FormItem>
               <Button
-                type="primary"
-                htmlType="submit"
-                className="login-form-button"
+                type='primary'
+                htmlType='submit'
+                className='login-form-button'
               >
                 登录
               </Button>
