@@ -9,6 +9,11 @@
 # production
 /build
 
+# App packaged
+release
+src/index.css
+src/index.css.map
+
 # misc
 .DS_Store
 .env.local

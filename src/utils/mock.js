@@ -1,2 +1,2 @@
-import '../modules/page.login/mock'
-import '../modules/page.req.manage/mock'
+import '../modules/page.login/mock';
+import '../modules/page.req.manage/mock';

@@ -34,6 +34,10 @@
     "babel-eslint": "^8.2.3",
     "babel-plugin-import": "^1.7.0",
     "eslint": "^4.19.1",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-promise": "^3.8.0",
+    "eslint-plugin-react": "^7.8.2",
     "fetch-mock": "^6.4.2",
     "gh-pages": "^1.1.0",
     "mockjs": "^1.0.1-beta3",
@@ -51,5 +55,5 @@
       "changeOrigin": true
     }
   },
-  "homepage": "http://olivianate.github.io/react-spa/"
+  "homepage": "http://olivianate.github.io/react-spa"
 }

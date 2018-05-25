@@ -1,15 +1,15 @@
-import "whatwg-fetch";
-import { message } from "antd";
+import 'whatwg-fetch';
+import { message } from 'antd';
 
 const headers = {
-  "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+  'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
 };
 
 const fetchInitOption = (obj = {}) => {
   if (obj instanceof FormData) return obj;
   return Object.keys(obj)
     .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(obj[key])}`)
-    .join("&");
+    .join('&');
 };
 
 /**
@@ -25,7 +25,7 @@ export default function HttpUtils(options) {
     const postdata = fetchInitOption(data);
 
     fetch(url, {
-      method: "POST",
+      method: 'POST',
       headers: headers,
       body: postdata
     })
@@ -36,7 +36,7 @@ export default function HttpUtils(options) {
         // throw `${res.status}, ${res.statusText}`;
       })
       .then(json => {
-        if (json && json.result === "success") {
+        if (json && json.result === 'success') {
           resolve(json);
         } else {
           reject(json);
@@ -45,7 +45,7 @@ export default function HttpUtils(options) {
       })
       .catch(err => {
         reject(err);
-        message.error("网络异常");
+        message.error('网络异常');
       });
   });
 }

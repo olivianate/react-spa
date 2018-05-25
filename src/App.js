@@ -1,5 +1,5 @@
-import "./App.css";
 import React, { Component } from "react";
+import "./App.css";
 import { connect } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
 import { Layout } from "antd";
@@ -7,7 +7,7 @@ import HeaderBar from "./modules/common.header";
 import Contents from "./modules/common.contents";
 import { menus } from "./utils/menus";
 import { Menu, Icon } from "antd";
-
+import config from './config';
 const { Header, Footer, Sider } = Layout;
 
 class App extends Component {
@@ -32,7 +32,8 @@ class App extends Component {
     const selectedKeys = [
       this.state.current || (defaultCurrent && defaultCurrent.url)
     ];
-
+    
+    
     return (
       <Layout style={{ minHeight: "100vh" }}>
         <Sider
@@ -48,9 +49,10 @@ class App extends Component {
             onClick={this.handleClick}
           >
             {menus.map(menu => {
+              const path = config.host ? `/${config.host}/${menu.url}` : `/${menu.url}`;
               return (
                 <Menu.Item key={menu.url}>
-                  <Link to={`/${menu.url}`}>
+                  <Link to={path}>
                     <Icon type={menu.icon} />
                     <span>{menu.name}</span>
                   </Link>

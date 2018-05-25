@@ -1,14 +1,14 @@
 const dev = {
-    isMock: true,
-    isDebug: true,
-    host: '',
+  isMock: true,
+  isDebug: true,
+  host: '',
 };
 
-// const pro = {
-//     isMock: false,
-//     isDebug: false,
-//     host:'',
-// }
-// const config = process.env.NODE_ENV === 'production' ? pro : dev;
-const config = dev;
+const pro = {
+  isMock: true,
+  isDebug: false,
+  host: '/react-spa',
+};
+
+const config = process.env.NODE_ENV === 'production' ? pro : dev;
 export default config;
