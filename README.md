@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/olivianate/react-spa.svg?branch=master)](https://travis-ci.org/olivianate/react-spa)
 
-
+[![GitHub tag](https://img.shields.io/github/tag/olivianate/react-spa.svg)]()
 ### Usage
 ```
 
