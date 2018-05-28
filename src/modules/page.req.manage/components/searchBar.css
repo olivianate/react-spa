@@ -5,6 +5,11 @@
     display: inline-block;
     margin: 0 5px;
 }
+.search-buttons{
+    display: inline-block;
+    float: right;
+    margin: 0 5px;
+}
 .search-item label{
     margin-right: 5px;
 }

@@ -12,26 +12,6 @@ class SearchBar extends Component {
   }
   handleDateChange = (date, dateString) => {};
   handelDateOk = value => {};
-  // submitHandle = e => {
-  //   const { fields } = this.state;
-  //   if (this.props.onSubmit) {
-  //     const fields = {};
-  //     for (const key in this.state.fields) {
-  //       let value = this.state.fields[key];
-  //       if (typeof value === "string") {
-  //         value = value.trim();
-  //       }
-  //       if (value._isAMomentObject) {
-  //         value = value.format("YYYY-MM-DD");
-  //       }
-
-  //       if (value !== "") {
-  //         fields[key] = value;
-  //       }
-  //     }
-  //   }
-  //   this.props.onSubmit(fields);
-  // };
   setFiled = (field, value) => {
     const newFields = {};
     if (Array.isArray(field)) {
@@ -57,7 +37,7 @@ class SearchBar extends Component {
   };
   render() {
     const { fields } = this.state;
-    const { onSubmit } = this.props;
+    const { onSubmit, onInsert } = this.props;
     return (
       <div className="search-box">
         <div className="search-item">
@@ -85,6 +65,11 @@ class SearchBar extends Component {
         <div className="search-item">
           <Button type="primary" icon="search" onClick={onSubmit}>
             Search
+          </Button>
+        </div>
+        <div className="search-buttons">
+          <Button type="primary" onClick={onInsert}>
+            add new
           </Button>
         </div>
       </div>

@@ -33,6 +33,10 @@ class PageReqManage extends Component {
     this.setState({ currentPage: 1 }, this.onSearch);
   };
 
+  onInsert = () => {
+    const item = {};
+    this.props.openEditModal({ item, editModalVisible: true });
+  };
   //表格分页切换
   handleTableChange = page => {
     const { current, pageSize } = page;
@@ -94,11 +98,22 @@ class PageReqManage extends Component {
 
   handleEditOk = () => {
     const form = this.editForm;
-    this.handleCancel("edit");
     form.validateFields((err, values) => {
       if (!err) {
-        this.onFetch();
-        // console.log("valuse:", values);
+        this.handleCancel('edit');
+        let requrl = '/insert';
+        if ( values.uuid ) {
+          requrl = '/edit';
+        } 
+
+        HttpUtils({ url: requrl, values })
+          .then(json => {
+            this.setState({
+              currentPage: 1
+            });
+            this.onFetch();
+          })
+          .catch(error => {});
       }
     });
   };
@@ -163,7 +178,11 @@ class PageReqManage extends Component {
     return (
       <div>
         <Spin spinning={isFetching}>
-          <SearchBar onChange={this.onChange} onSubmit={this.onFetch} />
+          <SearchBar 
+            onChange={this.onChange} 
+            onSubmit={this.onFetch}
+            onInsert={this.onInsert}
+          />
           <Table
             columns={this.tabelColumns(deleteText)}
             dataSource={
