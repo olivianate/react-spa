@@ -2,6 +2,7 @@
 
 [![GitHub tag](https://img.shields.io/github/tag/olivianate/react-spa.svg)]()
 
+[![Github All Releases](https://img.shields.io/github/downloads/olivianate/react-spa/total.svg)]()
 
 ### Usage
 ```
