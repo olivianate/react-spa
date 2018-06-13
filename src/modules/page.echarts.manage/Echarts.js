@@ -50,7 +50,7 @@ class Echarts extends Component {
     return option;
   };
   getPieOption = () => {
-    const pieoOption = {
+    const pieOption = {
       tooltip: {
         trigger: 'item',
         formatter: '{a} <br/>{b}: {c} ({d}%)'
@@ -94,7 +94,7 @@ class Echarts extends Component {
         }
       ]
     };
-    return pieoOption;
+    return pieOption;
   };
   render() {
     return (

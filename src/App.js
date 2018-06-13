@@ -37,6 +37,7 @@ class App extends Component {
     return (
       <Layout style={{ minHeight: "100vh" }}>
         <Sider
+          trigger={null}
           collapsible
           collapsed={this.props.collapsed}
           onCollapse={this.onCollapse}

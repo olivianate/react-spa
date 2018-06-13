@@ -7,6 +7,7 @@
     "history": "^4.7.2",
     "js-cookie": "^2.2.0",
     "react": "^15.6.1",
+    "react-bmap": "^1.0.71",
     "react-dev-utils": "^5.0.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.7",

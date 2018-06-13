@@ -3,7 +3,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
-import { Table, Popconfirm, Spin } from "antd";
+import { Popconfirm, Spin } from "antd";
+import Table from '../../components/table/index';
+
+
 import {
   fetchRequirement,
   openModal,
@@ -173,6 +176,8 @@ class PageReqManage extends Component {
       editModalVisible
     } = this.props;
     const dataSource = reqData.data;
+    let total = dataSource ? dataSource.length : '';
+
     const deleteText = "Are you sure delete this task?";
 
     return (
@@ -192,6 +197,7 @@ class PageReqManage extends Component {
                 key: i + 1
               }))
             }
+            total={total}
             onChange={this.handleTableChange}
           />
           <DetailModal

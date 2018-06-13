@@ -5,7 +5,7 @@ const Random = Mock.Random;
 
 FetchMock.mock('end:getdata', Mock.mock({
   'result': 'success',
-  'count': -1,
+  'count': 50,
   'msg': '成功',
   'data|1-50': [{
     'uuid|+1': 1,

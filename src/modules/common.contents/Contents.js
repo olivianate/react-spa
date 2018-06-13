@@ -22,17 +22,13 @@ class Contents extends Component {
         page: PageHomeManage
       },
       {
-        name: "首页",
+        name: "Home",
         path: config.host ? `/${config.host}/home` : "/home",
         page: PageHomeManage
       },
+      
       {
-        name: "地图",
-        path: config.host ? `/${config.host}/map` : "/map",
-        page: PageMapManage
-      },
-      {
-        name: "列表管理",
+        name: "List",
         path: config.host ? `/${config.host}/list` : "/list",
         page: PageReqManage
       },
@@ -40,6 +36,11 @@ class Contents extends Component {
         name: "Echart",
         path: config.host ? `/${config.host}/echarts` : "/echarts",
         page: PageEchartsManage
+      },
+      {
+        name: "Map",
+        path: config.host ? `/${config.host}/map` : "/map",
+        page: PageMapManage
       }
     ];
 

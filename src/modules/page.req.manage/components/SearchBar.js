@@ -1,7 +1,8 @@
 import "./searchBar.css";
 import React, { Component } from "react";
-import { Button, DatePicker, Input } from "antd";
+import { Button, DatePicker, Input, Select } from "antd";
 const { RangePicker } = DatePicker;
+const Option = Select.Option;
 
 class SearchBar extends Component {
   constructor(props) {
@@ -40,6 +41,22 @@ class SearchBar extends Component {
     const { onSubmit, onInsert } = this.props;
     return (
       <div className="search-box">
+        <div className="search-item">
+          <label>address:</label>
+          <Select
+            style={{ width: 200 }}
+            placeholder="Select address"
+            onChange={value => {
+              this.setFiled("address", value);
+            }}
+          >
+            <Option value="华北">华北</Option>
+            <Option value="华东">华东</Option>
+            <Option value="东北">东北</Option>
+            <Option value="华南">华南</Option>
+            <Option value="华中">华中</Option>
+          </Select>
+        </div>
         <div className="search-item">
           <label>age:</label>
           <Input
