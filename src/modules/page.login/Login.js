@@ -4,7 +4,7 @@ import React from 'react';
 import { Form, Icon, Input, Button, Row, Col } from 'antd';
 import HttpUtils from '../../utils/ajax';
 import Cookies from 'js-cookie';
-import config from '../../config';
+// import config from '../../config';
 const FormItem = Form.Item;
 
 class LoginPage extends React.Component {
@@ -78,11 +78,11 @@ class LoginPage extends React.Component {
     // const { history } = this.props;
     const { redirectToReferrer } = this.state;
     if (redirectToReferrer) {
-      const homepath = config.host ? `/${config.host}/` : '/';
+      // const homepath = config.host ? `/${config.host}/home` : '/home';
       // history.push({
       //   pathname: '/'
       // });
-      window.location.href = homepath;
+      window.location.href = './home';
     }
     const { getFieldDecorator } = this.props.form;
     const { seconds, isFetching } = this.state;

@@ -7,7 +7,7 @@
   "keywords": [
     "Electron"
   ],
-  "homepage": ".",
+  "homepage": "./",
   "build": {
     "mac": {
       "category": "tools"

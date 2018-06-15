@@ -6,16 +6,24 @@
 ### Usage
 ```
 
-本地运行
+install
+
 yarn install || npm install
 yarn start || npm start
+npm run electron-dev
 
-打包
+
+build
+
 yarn build || npm run build
+npm run packager
 
-发布
+
+deploy
 yarn deploy
 
-反编译
+eject
 yarn eject || npm run eject
+
+
 ```

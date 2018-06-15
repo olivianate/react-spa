@@ -9,12 +9,12 @@ import { Provider } from 'react-redux';
 import reducerStore from './store';
 import { createLogger } from 'redux-logger';
 import config from './config';
-import registerServiceWorker from './registerServiceWorker';
+// import registerServiceWorker from './registerServiceWorker';
 
 if (config.isMock) {
   require('./utils/mock');
 }
-window.BASE_URL = '/';
+// window.BASE_URL = '/';
 const logger = createLogger();//日志中间件
 
 const enhancer = compose(applyMiddleware(thunk, logger));
@@ -27,4 +27,4 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
-registerServiceWorker();
+// registerServiceWorker();

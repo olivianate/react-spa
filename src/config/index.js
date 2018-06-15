@@ -7,7 +7,8 @@ const dev = {
 const pro = {
   isMock: true,
   isDebug: false,
-  host: 'react-spa',
+  host:'',
+  // host: 'react-spa',
 };
 
 const config = process.env.NODE_ENV === 'production' ? pro : dev;
