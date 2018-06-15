@@ -2,11 +2,61 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
+  "main": "./public/electron.js",
+  "repository": "https://github.com/electron/electron-quick-start",
+  "keywords": [
+    "Electron"
+  ],
+  "homepage": ".",
+  "build": {
+    "mac": {
+      "category": "tools"
+    },
+    "files": [
+      {
+        "from": "./",
+        "to": "./",
+        "filter": [
+          "**/*",
+          "!node_modules"
+        ]
+      }
+    ],
+    "directories": {
+      "buildResources": "public"
+    }
+  },
+  "dependencies": {},
+  "scripts": {
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test --env=jsdom",
+    "eject": "react-app-rewired eject",
+    "deploy": "gh-pages -d build",
+    "electron-dev": "ELECTRON_START_URL=http://localhost:3000 electron .",
+    "packager": "npm run build && rm -rf dist && electron-builder"
+  },
+  "devDependencies": {
     "antd": "^3.5.0",
+    "babel-eslint": "^8.2.3",
+    "babel-plugin-import": "^1.7.0",
+    "echarts": "^4.1.0",
+    "electron": "^2.0.2",
+    "electron-builder": "^20.8.1",
+    "electron-packager": "^12.1.0",
+    "eslint": "^4.19.1",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-promise": "^3.8.0",
+    "eslint-plugin-react": "^7.8.2",
+    "fetch-mock": "^6.4.2",
+    "gh-pages": "^1.1.0",
     "history": "^4.7.2",
     "js-cookie": "^2.2.0",
+    "mockjs": "^1.0.1-beta3",
     "react": "^15.6.1",
+    "react-app-rewire-less": "^2.1.1",
+    "react-app-rewired": "^1.5.2",
     "react-bmap": "^1.0.71",
     "react-dev-utils": "^5.0.1",
     "react-dom": "^15.6.1",
@@ -15,37 +65,8 @@
     "react-router-dom": "^4.1.1",
     "react-scripts": "1.1.4",
     "redux": "^4.0.0",
+    "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0"
-  },
-  "pre-commit": [
-    "precommit-msg",
-    "lint"
-  ],
-  "scripts": {
-    "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
-    "test": "react-app-rewired test --env=jsdom",
-    "eject": "react-app-rewired eject",
-    "deploy": "gh-pages -d build",
-    "precommit-msg": "echo 'Pre-commit checks...' && exit 0",
-    "lint": "eslint --cache ./src",
-    "lint-fix": "eslint --cache ./src --fix"
-  },
-  "devDependencies": {
-    "babel-eslint": "^8.2.3",
-    "babel-plugin-import": "^1.7.0",
-    "echarts": "^4.1.0",
-    "eslint": "^4.19.1",
-    "eslint-plugin-import": "^2.12.0",
-    "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-promise": "^3.8.0",
-    "eslint-plugin-react": "^7.8.2",
-    "fetch-mock": "^6.4.2",
-    "gh-pages": "^1.1.0",
-    "mockjs": "^1.0.1-beta3",
-    "react-app-rewire-less": "^2.1.1",
-    "react-app-rewired": "^1.5.2",
-    "redux-logger": "^3.0.6"
   },
   "proxy": {
     "/ehuodiBedrockApi": {
@@ -56,6 +77,5 @@
       "target": "http://test.api.com",
       "changeOrigin": true
     }
-  },
-  "homepage": "http://olivianate.github.io/react-spa"
+  }
 }

@@ -8,6 +8,9 @@
 
 # production
 /build
+/out
+/dist
+
 
 # App packaged
 release
