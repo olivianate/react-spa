@@ -2,26 +2,23 @@
 
 [![GitHub tag](https://img.shields.io/github/tag/olivianate/react-spa.svg)]()
 
-## Introduction
+## introduction
 
 ![image](https://github.com/olivianate/react-spa/blob/master/Screenshots/localhost.png)
 
 
-### Usage
+### usage
 ```
 
 install
-
 yarn install || npm install
 yarn start || npm start
-npm run electron-dev
 
+start
+npm run debug
 
 build
-
 yarn build || npm run build
-npm run packager
-
 
 deploy
 yarn deploy
