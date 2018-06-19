@@ -4,7 +4,7 @@
 
 ## introduction
 
-Building react\react-router\react-redux\Ant Design background management system based on create-react-app， introducing mock data
+Building react\react-router\react-redux\Ant Design management system based on create-react-app， mock data
 
 ![image](https://github.com/olivianate/react-spa/blob/master/Screenshots/screen.png)
 
