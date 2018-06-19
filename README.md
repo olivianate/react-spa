@@ -4,7 +4,7 @@
 
 ## introduction
 
-![image](https://github.com/olivianate/react-spa/blob/master/Screenshots/localhost.png)
+![image](https://github.com/olivianate/react-spa/blob/master/Screenshots/screen.png)
 
 
 ### usage
