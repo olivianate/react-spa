@@ -12,7 +12,7 @@
 
 install
 yarn install || npm install
-yarn start || npm start
+yarn start || npm run start
 
 start
 npm run debug
