@@ -19,7 +19,7 @@ class LoginPage extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const { form } = this.props;
+    const { form, history } = this.props;
 
     form.validateFields((err, values) => {
       if (err) {
@@ -36,6 +36,7 @@ class LoginPage extends React.Component {
         const data = json.data;
         Cookies.set('username', data.username, { path: '/' });
         this.setState({ redirectToReferrer: true });
+        history.push('/home'); 
       });
     });
   };
@@ -75,15 +76,6 @@ class LoginPage extends React.Component {
     });
   };
   render() {
-    // const { history } = this.props;
-    const { redirectToReferrer } = this.state;
-    if (redirectToReferrer) {
-      // const homepath = config.host ? `/${config.host}/home` : '/home';
-      // history.push({
-      //   pathname: '/'
-      // });
-      window.location.href = './home';
-    }
     const { getFieldDecorator } = this.props.form;
     const { seconds, isFetching } = this.state;
 
