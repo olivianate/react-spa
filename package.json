@@ -33,8 +33,11 @@
     "test": "react-app-rewired test --env=jsdom",
     "eject": "react-app-rewired eject",
     "deploy": "gh-pages -d build",
-    "electron-dev": "ELECTRON_START_URL=http://localhost:3000 electron .",
-    "packager": "npm run build && rm -rf dist && electron-builder"
+    "debug": "NODE_ENV=development electron .",
+    "pack": "electron-builder --dir",
+    "dist-all": "electron-builder -mw",
+    "dist-mac": "electron-builder -m",
+    "dist-win": "electron-builder -w"
   },
   "devDependencies": {
     "antd": "^3.5.0",
