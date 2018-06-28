@@ -7,7 +7,7 @@
   "keywords": [
     "Electron"
   ],
-  "homepage": "https://olivianate.github.io/react-spa/",
+  "homepage": "https://olivianate.github.io",
   "build": {
     "mac": {
       "category": "tools"
