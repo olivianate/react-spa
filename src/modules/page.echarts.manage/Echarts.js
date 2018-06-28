@@ -2,7 +2,11 @@ import './index.css';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import BarChart from './components/BarChart';
+// import BarChart from './components/BarChart';
+import asyncComponent from '../../components/asyncComponent';
+
+const BarChart = asyncComponent(()=>import('./components/BarChart.js'));
+
 
 class Echarts extends Component {
   getBarOption = () => {

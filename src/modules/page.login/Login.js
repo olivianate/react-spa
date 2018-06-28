@@ -4,14 +4,12 @@ import React from 'react';
 import { Form, Icon, Input, Button, Row, Col } from 'antd';
 import HttpUtils from '../../utils/ajax';
 import Cookies from 'js-cookie';
-// import config from '../../config';
 const FormItem = Form.Item;
 
 class LoginPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      redirectToReferrer: false,
       seconds: 30,
       isFetching: false
     };
@@ -35,7 +33,6 @@ class LoginPage extends React.Component {
       }}).then(json => {
         const data = json.data;
         Cookies.set('username', data.username, { path: '/' });
-        this.setState({ redirectToReferrer: true });
         history.push('/home'); 
       });
     });
